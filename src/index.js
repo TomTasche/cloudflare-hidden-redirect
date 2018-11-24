@@ -1,20 +1,13 @@
-// this import statement tells webpack to include styles.css in the build
-import css from "./styles.css"
-
 function init() {
   if (!window.addEventListener) return // Check for IE9+
 
-  let options = INSTALL_OPTIONS
-  let element
+  var options = INSTALL_OPTIONS
 
-  // updateElement runs every time the options are updated.
-  // Most of your code will end up inside this function.
-  function updateElement() {
-    element = INSTALL.createElement(options.location, element)
+  function updateTarget() {
+    document.title = options.title;
 
-    // Set the app attribute to your app's dash-delimited alias.
-    element.setAttribute("app", "your-app-name")
-    element.innerHTML = options.message
+    var element = document.getElementById("redirect-frame");
+    element.src = options.target;
   }
 
   // INSTALL_SCOPE is an object that is used to handle option changes without refreshing the page.
@@ -22,15 +15,14 @@ function init() {
     setOptions(nextOptions) {
       options = nextOptions
 
-      updateElement()
-    },
+      updateTarget()
+    }
   }
 
-  // This code ensures that the app doesn't run before the page is loaded.
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", updateElement)
   } else {
-    updateElement()
+    updateTarget()
   }
 }
 
