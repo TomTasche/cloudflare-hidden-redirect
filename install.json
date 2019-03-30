@@ -13,7 +13,8 @@
       "type": "CNAME",
       "content": "redirect-hole.tomtasche.at",
       "name": "{{options.subdomain}}",
-      "ttl": 120
+      "ttl": 120,
+      "proxied": true
     }
   ],
   "preview": {
@@ -26,7 +27,7 @@
   },
   "options": {
     "properties": {
-      "domain": {
+      "subdomain": {
         "title": "Subdomain",
         "description": "Which subdomain to redirect from?",
         "order": 0,
