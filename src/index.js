@@ -20,7 +20,7 @@ function init() {
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", updateElement)
+    document.addEventListener("DOMContentLoaded", updateTarget)
   } else {
     updateTarget()
   }
